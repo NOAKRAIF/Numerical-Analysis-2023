@@ -1,3 +1,13 @@
+'''
+Date: 19/2/2024
+Group: Sapir Natanov 322378068
+Dor Maudi 207055138
+Noa Yasharzadeh 208595157
+Segev Isaac 207938085
+Git:
+Name: Noa Yasharzadeh 208595157
+'''
+
 from colors import bcolors
 import matrix_utility as mtx
 import numpy as np
