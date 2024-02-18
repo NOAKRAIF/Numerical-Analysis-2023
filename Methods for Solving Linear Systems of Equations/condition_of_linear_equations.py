@@ -24,6 +24,7 @@ def norm(mat):
         if sum_row > max_row:
             max_row = sum_row
     return max_row
+    #sum of the max row
 
 
 def condition_number(A):

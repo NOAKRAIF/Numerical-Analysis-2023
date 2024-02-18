@@ -17,6 +17,7 @@ def gaussianElimination(mat):
     N = len(mat)
 
     singular_flag = forward_substitution(mat)
+    #לשלוח למטריצה שמדרגת
 
     if singular_flag != -1:
 
@@ -43,6 +44,8 @@ def forward_substitution(mat):
 
         # if a principal diagonal element is zero,it denotes that matrix is singular,
         # and will lead to a division-by-zero later.
+
+        #אם שווה ל0 ייכנס לתנאי
         if not mat[pivot_row][k]:
             return k  # Matrix is singular
 
@@ -51,11 +54,12 @@ def forward_substitution(mat):
             swap_row(mat, k, pivot_row)
         # End Partial Pivoting
 
-        for u in range(N):
-            if not round(mat[u][u], 4):
-                mat[u][u] = 0
-                print(f"matrix: \n{np.array(mat)}\n")
-                return N-1
+        for i in range(N):
+            if mat[i][i] == 0:
+                pass
+            elif not round(mat[i][i], 4):
+                mat[i][i] = 0
+            return N-1
 
         for z in range(k, N):
             mat[k][z+1] /= mat[k][k]
@@ -82,6 +86,11 @@ def forward_substitution(mat):
         # for z in range(k, N):
         #     mat[k][z+1] /= mat[k][k]
         # mat[k][k] /= mat[k][k]
+    for u in range(N):
+        if not round(mat[u][u], 4):
+            mat[u][u] = 0
+            print(f"matrix: \n{np.array(mat)}\n")
+            return N-1
 
     mat[N-1][N] /= mat[N-1][N-1]
     mat[N-1][N-1] /= mat[N-1][N-1]
@@ -119,6 +128,7 @@ if __name__ == '__main__':
     #      [0.457, 0.330, 0.127]]
 
     np.set_printoptions(suppress=True, precision=4)
+    #עיגול מספרים קטנים מאוד
 
     result = gaussianElimination(A_b)
     if isinstance(result, str):
