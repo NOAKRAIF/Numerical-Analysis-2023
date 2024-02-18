@@ -1,3 +1,13 @@
+'''
+Date: 19/2/2024
+Group: Sapir Natanov 322378068
+Dor Maudi 207055138
+Noa Yasharzadeh 208595157
+Segev Isaac 207938085
+Git:https://github.com/SapirNatanov/Numerical-Analysis-2023.git
+Name: Sapir Natanov 322378068
+'''
+
 import numpy as np
 from Matrix.inverse_matrix import inverse
 from colors import bcolors
