@@ -21,8 +21,8 @@ The resulting identity matrix will be the inverse of the input matrix if it is n
 
 
 def inverse(matrix):
-    matX = A
-    matY = A
+    # matX = A
+    # matY = A
     flagX = False
     flagY = False
     counter = 0

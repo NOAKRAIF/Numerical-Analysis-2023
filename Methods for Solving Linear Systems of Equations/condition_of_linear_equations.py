@@ -8,6 +8,7 @@ Git: https://github.com/NOAKRAIF/Numerical-Analysis-2023.git
 Name: Noa Yasharzadeh 208595157
 '''
 
+#כדי שיעבוד צריך לכבות 24-25
 import numpy as np
 from Matrix.inverse_matrix import inverse
 from colors import bcolors
