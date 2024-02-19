@@ -8,7 +8,7 @@ Git: https://github.com/NOAKRAIF/Numerical-Analysis-2023.git
 Name: Noa Yasharzadeh 208595157
 '''
 
-#כדי שיעבוד צריך לכבות 24-25
+
 import numpy as np
 from Matrix.inverse_matrix import inverse
 from colors import bcolors
@@ -41,27 +41,27 @@ def condition_number(A):
     # Step 4: Compute the condition number
     cond = norm_A * norm_A_inv
 
-    print(bcolors.OKBLUE, "A:", bcolors.ENDC)
-    print_matrix(A)
+    # print(bcolors.OKBLUE, "A:", bcolors.ENDC)
+    # print_matrix(A)
 
-    print(bcolors.OKBLUE, "inverse of A:", bcolors.ENDC)
-    print_matrix(A_inv)
+    # print(bcolors.OKBLUE, "inverse of A:", bcolors.ENDC)
+    # print_matrix(A_inv)
 
     print(bcolors.OKBLUE, "Max Norm of A:", bcolors.ENDC, norm_A, "\n")
 
-    print(bcolors.OKBLUE, "max norm of the inverse of A:", bcolors.ENDC, norm_A_inv)
+    # print(bcolors.OKBLUE, "max norm of the inverse of A:", bcolors.ENDC, norm_A_inv)
 
     return cond
 
 
 if __name__ == '__main__':
-    A = np.array([[2, 1.7, -2.5],
-                  [1.24, -2, -0.5],
-                  [3, 0.2, 1]])
+    A = np.array([[2, 1, 0],
+                  [3, -1, 0],
+                  [1, 4, -2]])
 
     cond = condition_number(A)
 
-    print(bcolors.OKGREEN, "\n condition number: ", cond, bcolors.ENDC)
+    #print(bcolors.OKGREEN, "\n condition number: ", cond, bcolors.ENDC)
 
 
 

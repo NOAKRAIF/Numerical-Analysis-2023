@@ -11,6 +11,7 @@ Name: Noa Yasharzadeh 208595157
 import numpy as np
 from colors import bcolors
 from matrix_utility import swap_row
+from condition_of_linear_equations import norm
 
 
 def gaussianElimination(mat):
@@ -119,21 +120,63 @@ def backward_substitution(mat):
     return x
 
 
+
+#
+# def gaussian_elimination(A):
+#     m, n = A.shape
+#     E_matrices = []
+#
+#     for i in range(min(m, n)):
+#         # Find the pivot row
+#         pivot_row = i
+#         for k in range(i + 1, m):
+#             if abs(A[k, i]) > abs(A[pivot_row, i]):
+#                 pivot_row = k
+#
+#         # Swap rows if necessary
+#         if pivot_row != i:
+#             A[[i, pivot_row]] = A[[pivot_row, i]]
+#             E = np.eye(m)
+#
+#
+# A = np.array([[-1, -2, 3, 2],
+#               [4, -1, 1, 4],
+#               [1, 6, 2, 9]], dtype=float)  # Set the dtype to float
+#
+# # Perform Gaussian elimination
+# A_reduced, E_matrices = gaussian_elimination(A.copy())
+#
+# # Print elementary matrices
+# for i, E in enumerate(E_matrices):
+#     print(f"Elementary Matrix {i + 1}:")
+#     print(E)
+#     print()
+#
+# # Print reduced row echelon form
+# print("Reduced Row Echelon Form:")
+# print(A_reduced)
+
+
 if __name__ == '__main__':
 
-    # A_b = [[1, 2, 3, 4, 5],
-    #        [2, 3, 4, 5, 1],
-    #        [8, 8, 8, 8, 1],
-    #        [24, 15, 22, 1, 8]]
+    A_b = [[1, 2, 3, 4, 5],
+           [2, 3, 4, 5, 1],
+           [8, 8, 8, 8, 1],
+           [24, 15, 22, 1, 8]]
 
     # A_b = [[0.913, 0.659, 0.254],
     #      [0.457, 0.330, 0.127]]
 
-    A_b = [[2, 3, 0, 5],
-           [3, 4, 5, 1],
-           [8, 8, 3, 1]]
+    # A_b = [[2, 3, 0, 5],
+    #        [3, 4, 5, 1],
+    #        [8, 8, 3, 1]]
 
-    np.set_printoptions(suppress=True, precision=4)
+    # Printing of the maximum norm
+    # x = norm(A_b)
+    # print(f"norm of matrix {x}:")
+
+
+    np.set_printoptions (suppress = True , precision = 4)
 
     result = gaussianElimination(A_b)
     if isinstance(result, str):

@@ -50,8 +50,8 @@ def inverse(matrix):
                     mtx.swap_rows_elementary_matrix(elemn_matrix, i, j + 1)
                     matrix = np.dot(elemn_matrix, matrix)
                     identity = np.dot(elemn_matrix, identity)
-                    print(bcolors.HEADER, "ID:\n", identity, bcolors.ENDC)
-                    print(bcolors.WARNING, f"Matrix row swap {j} with {j + 1}\n", matrix, bcolors.ENDC)
+                    #print(bcolors.HEADER, "ID:\n", identity, bcolors.ENDC)
+                    #print(bcolors.WARNING, f"Matrix row swap {j} with {j + 1}\n", matrix, bcolors.ENDC)
                     j += 1
                     break
                 elif matrix[j + 1, i] == 0:
@@ -64,86 +64,95 @@ def inverse(matrix):
             # Scale the current row to make the diagonal element 1
             scalar = 1.0 / matrix[i, i]
             elementary_matrix = mtx.scalar_multiplication_elementary_matrix(n, i, scalar)
-            counter += 1
-            if counter == indexX and not flagX:
-                matX = elementary_matrix
-                flagX = True
-            if counter == indexY and not flagY:
-                matY = elementary_matrix
-                flagY = True
-            print(f"elementary matrix to make the diagonal element 1 :\n {elementary_matrix} \n")
+            #counter += 1
+            if counter < 3:
+                print(f"Matrix E {counter + 1}: \n",elementary_matrix)
+                counter += 1
+            # if counter == indexX and not flagX:
+            #     matX = elementary_matrix
+            #     flagX = True
+            # if counter == indexY and not flagY:
+            #     matY = elementary_matrix
+            #     flagY = True
+            #print(f"elementary matrix to make the diagonal element 1 :\n {elementary_matrix} \n")
             matrix = np.dot(elementary_matrix, matrix)
-            print(f"The matrix after elementary operation :\n {matrix}")
-            print(bcolors.OKGREEN,
-                  "------------------------------------------------------------------------------------------------------------------",
-                  bcolors.ENDC)
-            identity = np.dot(elementary_matrix, identity)
-            print(bcolors.HEADER, "ID:\n", identity, bcolors.ENDC)
+            #print(f"The matrix after elementary operation :\n {matrix}")
+            # print(bcolors.OKGREEN,
+            #       "------------------------------------------------------------------------------------------------------------------",
+            #       bcolors.ENDC)
+            # identity = np.dot(elementary_matrix, identity)
+            # print(bcolors.HEADER, "ID:\n", identity, bcolors.ENDC)
 
         # Zero out the elements below the diagonal
         for j in range(n):
             if i != j and matrix[j, i] != 0 and j > i:
                 scalar = -matrix[j, i]
                 elementary_matrix = mtx.row_addition_elementary_matrix(n, j, i, scalar)
-                counter += 1
-                if counter == indexX and not flagX:
-                    matX = elementary_matrix
-                    flagX = True
-                if counter == indexY and not flagY:
-                    matY = elementary_matrix
-                    flagY = True
-                print(f"elementary matrix for R{j + 1} = R{j + 1} + ({scalar}R{i + 1}):\n {elementary_matrix} \n")
+                #counter += 1
+                if counter < 3:
+                    print(f"Matrix E {counter + 1}: \n",elementary_matrix)
+                    counter += 1
+                # if counter == indexX and not flagX:
+                #     matX = elementary_matrix
+                #     flagX = True
+                # if counter == indexY and not flagY:
+                #     matY = elementary_matrix
+                #     flagY = True
+                # print(f"elementary matrix for R{j + 1} = R{j + 1} + ({scalar}R{i + 1}):\n {elementary_matrix} \n")
                 matrix = np.dot(elementary_matrix, matrix)
-                print(f"The matrix after elementary operation :\n {matrix}")
-                print(bcolors.OKGREEN,
-                      "------------------------------------------------------------------------------------------------------------------",
-                      bcolors.ENDC)
+                # print(f"The matrix after elementary operation :\n {matrix}")
+                # print(bcolors.OKGREEN,
+                #       "------------------------------------------------------------------------------------------------------------------",
+                #       bcolors.ENDC)
                 identity = np.dot(elementary_matrix, identity)
-                print(bcolors.HEADER, "ID:\n", identity, bcolors.ENDC)
+                # print(bcolors.HEADER, "ID:\n", identity, bcolors.ENDC)
 
     for i in range(n - 1, -1, -1):
         for j in range(n - 1, -1, -1):
             if i != j and matrix[j, i] != 0 and i > j:
                 scalar = -matrix[j, i]
                 elementary_matrix = mtx.row_addition_elementary_matrix(n, j, i, scalar)
-                counter += 1
-                if counter == indexX and not flagX:
-                    matX = elementary_matrix
-                    flagX = True
-                if counter == indexY and not flagY:
-                    matY = elementary_matrix
-                    flagY = True
-                print(f"elementary matrix for R{j + 1} = R{j + 1} + ({scalar}R{i + 1}):\n {elementary_matrix} \n")
+                #counter += 1
+                if counter < 3:
+                    print("Matrix ", "\n", {counter+1}, elementary_matrix)
+                    counter += 1
+                # if counter == indexX and not flagX:
+                #     matX = elementary_matrix
+                #     flagX = True
+                # if counter == indexY and not flagY:
+                #     matY = elementary_matrix
+                #     flagY = True
+                #print(f"elementary matrix for R{j + 1} = R{j + 1} + ({scalar}R{i + 1}):\n {elementary_matrix} \n")
                 matrix = np.dot(elementary_matrix, matrix)
-                print(f"The matrix after elementary operation :\n {matrix}")
-                print(bcolors.OKGREEN,
-                      "------------------------------------------------------------------------------------------------------------------",
-                      bcolors.ENDC)
+                # print(f"The matrix after elementary operation :\n {matrix}")
+                # print(bcolors.OKGREEN,
+                #       "------------------------------------------------------------------------------------------------------------------",
+                #       bcolors.ENDC)
                 identity = np.dot(elementary_matrix, identity)
-                print(bcolors.HEADER, "ID:\n", identity, bcolors.ENDC)
-    print(f"MatX: \n{matX}\nmatY: \n{matY}")
-    print(f"dot: \n{np.dot(matX, matY)}")
+                # print(bcolors.HEADER, "ID:\n", identity, bcolors.ENDC)
+    # print(f"MatX: \n{matX}\nmatY: \n{matY}")
+    # print(f"dot: \n{np.dot(matX, matY)}")
     return identity
 
 
 if __name__ == '__main__':
 
-    A = np.array([[3, 2, 7],
-                  [0, 3, 1],
-                  [5, 2, 10]])
+    A = np.array([[2, 1, 0],
+                  [3, -1, 0],
+                  [1, 4, -2]])
 
-    B = np.array([-4, 5, -2])
+    B = np.array([-3, 1, -5])
 
     np.set_printoptions(suppress=True, precision=4)
 
     try:
         A_inverse = inverse(A)
-        print(bcolors.OKBLUE, "\nInverse of matrix A: \n", A_inverse)
-        print(
-            "=====================================================================================================================",
-            bcolors.ENDC)
-        print(bcolors.OKGREEN, "Test\n", np.dot(A, A_inverse), "\n", bcolors.ENDC)
-        print(bcolors.OKGREEN, "Solving for -> X, Y, Z...:\n", np.dot(A_inverse, B), bcolors.ENDC)
+        # print(bcolors.OKBLUE, "\nInverse of matrix A: \n", A_inverse)
+        # print(
+        #     "=====================================================================================================================",
+        #     bcolors.ENDC)
+        # print(bcolors.OKGREEN, "Test\n", np.dot(A, A_inverse), "\n", bcolors.ENDC)
+        # print(bcolors.OKGREEN, "Solving for -> X, Y, Z...:\n", np.dot(A_inverse, B), bcolors.ENDC)
 
     except ValueError as e:
         print(str(e))
